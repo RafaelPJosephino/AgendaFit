@@ -21,10 +21,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\Relatorios\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Aplicacao\Aplicacao.csproj" />
   </ItemGroup>
 
