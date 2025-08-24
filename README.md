@@ -5,18 +5,32 @@ Este guia explica como configurar e rodar o projeto Agenda Fit localmente.
 ---
 
 ## Pré-requisitos
-
+- [Git](https://git-scm.com/)
 - [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
 - [PostgreSQL](https://www.postgresql.org/download/)
 - (Opcional) IDE: Visual Studio, VS Code, Rider, etc.
 
 ---
 
-## 1. Configurar a string de conexão
+## 1. Clonar o repositório
 
-1. Navegue até a camada **MVC** do projeto.  
-2. Se não existir, crie o arquivo `appsettings.json`.  
-3. Adicione a seguinte configuração(String de conexao com banco):
+Abra o terminal e execute o seguinte comando para clonar o repositório:
+
+```bash
+git clone https://github.com/RafaelPJosephino/AgendaFit.git
+```
+
+## 2. Configurar a string de conexão
+
+Navegue até a pasta do projeto MVC:
+
+```bash
+cd AgendaFit/Mvc
+```
+
+Se não existir, crie o arquivo `appsettings.json`.
+
+Adicione a seguinte configuração:
 
 ```json
 {
@@ -25,6 +39,35 @@ Este guia explica como configurar e rodar o projeto Agenda Fit localmente.
   }
 }
 ```
+
+> Substitua `senha` pela senha do seu usuário PostgreSQL.  
+> Certifique-se de que o banco de dados `agenda_fit` exista.(Final do arquivo tem todos os SQLs)
+
+---
+
+## 3. Rodar a aplicação
+
+Dentro da pasta `Mvc`, execute:
+
+```bash
+dotnet run
+```
+
+A aplicação será iniciada usando a string de conexão configurada.
+
+---
+
+## 4. Acessar a API e Swagger
+
+Após rodar a aplicação, abra seu navegador e acesse:
+
+```
+http://localhost:5000/swagger
+```
+
+> O Swagger exibirá todos os endpoints disponíveis da API para teste e documentação.
+
+---
 
 ## Banco De dados postgres
 ### 📌 Script SQL - AgendaFit
