@@ -1,7 +1,33 @@
-# AgendaFit
+# Agenda Fit - Como Rodar o Projeto
+
+Este guia explica como configurar e rodar o projeto Agenda Fit localmente.
+
+---
+
+## Pré-requisitos
+
+- [.NET 8 SDK](https://dotnet.microsoft.com/en-us/download/dotnet/8.0)
+- [PostgreSQL](https://www.postgresql.org/download/)
+- (Opcional) IDE: Visual Studio, VS Code, Rider, etc.
+
+---
+
+## 1. Configurar a string de conexão
+
+1. Navegue até a camada **MVC** do projeto.  
+2. Se não existir, crie o arquivo `appsettings.json`.  
+3. Adicione a seguinte configuração(String de conexao com banco):
+
+```json
+{
+  "ConnectionStrings": {
+    "DefaultConnection": "Host=localhost;Port=5432;Database=agenda_fit;Username=postgres;Password=senha"
+  }
+}
+```
 
 ## Banco De dados postgres
-# 📌 Script SQL - AgendaFit
+### 📌 Script SQL - AgendaFit
 
 ```sql
 -- Criacao do banco
@@ -42,3 +68,4 @@ CREATE TABLE agenda.agendafit_agendamento (
     CONSTRAINT fk_agendamento_aula FOREIGN KEY (id_aula) REFERENCES agenda.agendafit_aula(id_aula) ON DELETE NO ACTION,
     CONSTRAINT fk_agendamento_aluno FOREIGN KEY (id_aluno) REFERENCES agenda.agendafit_aluno(id_aluno) ON DELETE NO ACTION
 );
+```
