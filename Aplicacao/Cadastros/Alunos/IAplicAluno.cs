@@ -10,6 +10,5 @@ namespace Aplicacao.Cadastros.Alunos
 {
     public interface IAplicAluno : IAplicBase<Aluno>
     {
-        void ValidarAluno(Aluno? aluno);
     }
 }

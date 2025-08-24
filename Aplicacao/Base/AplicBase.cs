@@ -12,7 +12,7 @@ namespace Aplicacao.Base
             _repositorio = repositorio;
         }
 
-        public TEntidade? RecuperarPorId(int id)
+        public virtual TEntidade? RecuperarPorId(int id)
         {
             return _repositorio.RecuperarPorId(id);
         }
@@ -20,14 +20,17 @@ namespace Aplicacao.Base
         public virtual void Alterar(int id, TEntidade obj)
         {
             _repositorio.Alterar(id, obj);
+            SaveChanges();
         }
         public virtual void Inserir(TEntidade obj)
         {
             _repositorio.Inserir(obj);
+            SaveChanges();
         }
         public virtual void Remover(int id)
         {
             _repositorio.Remover(id);
+            SaveChanges();
         }
         public void SaveChanges()
         {

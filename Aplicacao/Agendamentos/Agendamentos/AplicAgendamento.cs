@@ -14,10 +14,27 @@ namespace Aplicacao.Agendamentos.Agendamentos
                                           IAplicAluno aplicAluno,
                                           IAplicAula aplicAula) : AplicBase<Agendamento>(repAgendamento), IAplicAgendamento
     {
-        private readonly  IRepAluno _repAluno = repAluno;
+        private readonly IRepAluno _repAluno = repAluno;
         private readonly IRepAula _repAula = repAula;
         private readonly IAplicAluno _aplicAluno = aplicAluno;
         private readonly IAplicAula _aplicAula = aplicAula;
+
+        public override void Inserir(Agendamento agendamento)
+        {
+            ValidaInserirAgendamento(agendamento);
+
+
+
+            base.Inserir(agendamento);
+        }
+        public override void Remover(int id)
+        {
+            base.Remover(id);
+        }
+
+
+
+
 
     }
 }

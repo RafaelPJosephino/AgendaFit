@@ -11,6 +11,5 @@ namespace Aplicacao.Cadastros.Aulas
 {
     public interface IAplicAula : IAplicBase<Aula>
     {
-        void ValidarAula(Aula? aula);
     }
 }

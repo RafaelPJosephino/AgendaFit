@@ -1,42 +1,42 @@
-﻿using Aplicacao.Cadastros.Alunos;
-using Aplicacao.Cadastros.Alunos.Dtos;
+﻿using Aplicacao.Cadastros.Aulas;
+using Aplicacao.Cadastros.Aulas.Dtos;
 using AutoMapper;
-using Dominio.Cadastros.Alunos;
 using Dominio.Cadastros.Aulas;
 using Microsoft.AspNetCore.Mvc;
 using Mvc.Base;
 
-namespace Mvc.Controllers.Cadastros.Alunos
+namespace Mvc.Controllers.Cadastros.Aulas
 {
     [ApiController]
     [Route("[controller]")]
-    public class AlunoController(IAplicAluno aplicAluno, IMapper mapper) : ControllerBase
+    public class AulaController(IAplicAula aplicAula,IMapper mapper) : ControllerBase
     {
-        private readonly IAplicAluno _aplicAluno = aplicAluno;
-        private readonly IMapper _mapper  = mapper;
+        private readonly IAplicAula _aplicAula = aplicAula;
+        private readonly IMapper _mapper = mapper; 
+
 
         [HttpGet("{id}")]
         public ActionResult Get([FromRoute] int id)
         {
             try
             {
-                var aluno = _aplicAluno.RecuperarPorId(id);
-                return Ok(aluno);
+                var aula = _aplicAula.RecuperarPorId(id);
+                return Ok(aula);
             }
             catch (Exception ex)
             {
-                return BadRequest(new ErrorResponse(ex, "Ocorreu um erro ao processar a solicitação."));
+                return BadRequest(new ErrorResponse(ex, "Ocorreu um erro ao processar a solicitação.")); 
             }
         }
 
         [HttpPost]
-        public ActionResult Post([FromBody] InserirAlunoDto alunoDto)
+        public ActionResult Post([FromBody] InserirAulaDto aulaDto)
         {
             try
             {
-                var aluno = _mapper.Map<Aluno>(alunoDto);
-                _aplicAluno.Inserir(aluno);
-                return Ok(aluno);
+                var aula = _mapper.Map<Aula>(aulaDto);
+                _aplicAula.Inserir(aula);
+                return Ok(aula);
 
             }
             catch (Exception ex)
@@ -46,12 +46,12 @@ namespace Mvc.Controllers.Cadastros.Alunos
         }
 
         [HttpPut("{id}")]
-        public ActionResult Put([FromRoute] int id, [FromBody] EditarAlunoDto alunoDto)
+        public ActionResult Put([FromRoute] int id, [FromBody] InserirAulaDto aulaDto)
         {
             try
             {
-                var aluno = _mapper.Map<Aluno>(alunoDto);
-                _aplicAluno.Alterar(id, aluno);
+                var aula = _mapper.Map<Aula>(aulaDto);
+                _aplicAula.Alterar(id, aula);
                 return Ok();
             }
             catch (Exception ex)
@@ -65,7 +65,7 @@ namespace Mvc.Controllers.Cadastros.Alunos
         {
             try
             {
-                _aplicAluno.Remover(id);
+                _aplicAula.Remover(id);
                 return Ok();
             }
             catch (Exception ex)
